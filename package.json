@@ -2,19 +2,22 @@
   "name": "npm-package-shell",
   "version": "1.0.0",
   "description": "template for npm packagages, include build push and stuff",
-  "main": "src/index.js",
+  "main": "dist/index.js",
+  "bin": {
+    "execute": "./cli.js"
+  },
   "scripts": {
-    "test": "npm run test"
+    "test": "jest",
+    "build": "tsc",
+    "prepublishOnly": "npm run build && npm test",
+    "lint": "eslint . --ext .js,.ts",
+    "format": "prettier --write \"**/*.{js,ts,json,md}\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Utility-Gods/npm-package-shell.git"
   },
-  "keywords": [
-    "npm",
-    "package",
-    "scaffolding"
-  ],
+  "keywords": ["npm", "package", "scaffolding"],
   "author": "siddharth (sid@utilitygods.com)",
   "license": "MIT",
   "bugs": {
